@@ -1,0 +1,22 @@
+{
+  "name": "docs",
+  "description": "",
+  "main": "index.js",
+  "license": "MIT",
+  "moduleType": [
+    "es6"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery-ui": "~1.11.4"
+  }
+}
