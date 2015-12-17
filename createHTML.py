@@ -1,6 +1,5 @@
 # coding: utf-8
 
-import __main__
 
 class createHTML:
 
@@ -204,7 +203,8 @@ class createHTML:
 		response += '    // 通信実行\n'
 		response += '    $.ajax({\n'
 		response += '      type: "post",\n'
-		response += '      url: "http://10.194.23.240:8001/create",\n'
+		response += '      url: "http://192.168.56.155:8001/create",\n'
+		###response += '      url: "http://10.194.23.240:8001/create",\n'
 		response += '      data: JSON.stringify(data),\n'
 		response += '      contentType: "application/json",\n'
 		response += '      dataType: "json",\n'
@@ -265,7 +265,7 @@ class createHTML:
 
 		return(response)
 
-	def detailHTML(self,eventID,eventlist):
+	def detailHTML(self,eventID,eventlist,partname):
 
 		for tmpid in eventlist:
 			if eventID == str(tmpid['id']):
@@ -350,6 +350,17 @@ class createHTML:
 		response1 += '        <p>%s</p>\n' % self.agenda
 		response1 += '        <h3>注意事項</h3>\n'
 		response1 += '        <p>%s</p>\n' % self.note
+		##############################################
+		response1 += '        <h3>参加者</h3>\n'
+
+		for dd in partname:
+			print dd
+			print dd['participant_name']
+			response1 += '        <p>%s</p>\n' % dd['participant_name']
+		#
+		#
+		#
+		##############################################
 		response1 += '        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#joinEvent">参加</button>\n'
 		response1 += '      </div>\n'
 		response1 += '      <div class="modal" id="joinEvent" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-show="true" data-keyboard="false" data-backdrop="static">\n'
@@ -393,7 +404,8 @@ class createHTML:
 		response1 += '    // 通信実行\n'
 		response1 += '    $.ajax({\n'
 		response1 += '      type: "post",\n'
-		response1 += '      url: "http://10.194.23.240:8001/events/%s",\n' %eventID
+		response1 += '      url: "http://192.168.56.155:8001/events/%s",\n' %eventID
+		###response1 += '      url: "http://10.194.23.240:8001/events/%s",\n' %eventID
 		response1 += '      data: JSON.stringify(data),\n'
 		response1 += '      contentType: "application/json",\n'
 		response1 += '      dataType: "json",\n'

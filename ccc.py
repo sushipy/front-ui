@@ -60,6 +60,7 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
         print "GET"
 
         event = EventDAO.Event()
+        event1 = EventDAO.Event()
         eventlist = event.find_event_all()
         cnt = len(eventlist)
 
@@ -80,8 +81,13 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
            print "detail"
 
            eventID = parsed_path.path[8:]
+           
+           ev = int(eventID)
+           print ev
+           partname = event1.find_participants_all(ev)
+           print partname
            makeHTML = createHTML.createHTML()
-           res = makeHTML.detailHTML(eventID,eventlist)
+           res = makeHTML.detailHTML(eventID,eventlist,partname)
 
            self.send_response(200)
            self.send_header('Content-type', 'text/html;charset=utf-8')

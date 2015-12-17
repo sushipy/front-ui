@@ -9,10 +9,13 @@ class Event:
 
     def _connect(self):
         self.connection = MySQLdb.connect(\
-            host="10.194.23.240", \
+            host="192.168.56.155", \
+            ###host="10.194.23.240", \
             db="bmi22", \
-            user="bmi22", \
-            passwd="bmi22")
+            user="root", \
+            ###user="bmi22", \
+            passwd="password")
+            ###passwd="bmi22", \
         return
 
     def _disconnect(self):
@@ -98,7 +101,8 @@ class Event:
     # 全参加者リスト取得
     def find_participants_all(self, id):
         cursor = self._get_cursor()
-        stmt = "select event.title, participant_name from participate_history inner join event on (participate_history.id = event.id)"
+        #stmt = "select event.title, participant_name from participate_history inner join event on (participate_history.id = event.id)"
+        stmt = "select participant_name from participate_history WHERE id = %s" % id
         cursor.execute(stmt)
         rows = cursor.fetchall()
         cursor.close()
