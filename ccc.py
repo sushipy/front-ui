@@ -34,9 +34,9 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
         
             event = EventDAO.Event()
             queryarray = [date, ftime, time, title, room, promotor_name, promotor_email, capacity, descri, agenda, note]
-            
+            print "soga"
             event.create(queryarray)
-            
+            print "create"
             self.send_response(200)
             self.end_headers()
             print "Create OK"
@@ -48,8 +48,10 @@ class JsonResponseHandler(BaseHTTPRequestHandler):
             event_id = eList['event_id']
             promotor_email = eList['promotor_email']
 
+            evid = int(event_id)
+
             event = EventDAO.Event()
-            event.participate(event_id,promotor_email)
+            event.participate(evid,promotor_email)
             self.send_response(200)
             self.end_headers()
             print "Sanka OK"

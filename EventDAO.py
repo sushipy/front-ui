@@ -9,10 +9,10 @@ class Event:
 
     def _connect(self):
         self.connection = MySQLdb.connect(\
-            host="192.168.56.155", \
+            host="10.194.23.240", \
             db="bmi22", \
-            user="root", \
-            passwd="password")
+            user="bmi22", \
+            passwd="bmi22")
         return
 
     def _disconnect(self):
@@ -70,10 +70,10 @@ class Event:
         cursor = self._get_cursor()
 
         # 更新前のイベント参加人数取得
-        stmt_select = ("select participant from event "
-                       "where id=%s")
-        cursor.execute(stmt_select, id)
-        row = cursor.fetchall()
+        #stmt_select = ("select participant from event "
+        #               "where id=%s")
+        #cursor.execute(stmt_select, id)
+        #row = cursor.fetchall()
 
         # 参加者名登録
         stmt_insert = ("insert into participate_history "
@@ -83,12 +83,12 @@ class Event:
         cursor.execute(stmt_insert, data)
 
         # 参加者人数更新
-        stmt_update = ("update event "
-                       "set participant=%s "
-                       "where id=%s")
-        participant = row[0]["participant"] + 1
-        data = [participant, id]
-        cursor.execute(stmt_update, data)
+        #stmt_update = ("update event "
+        #               "set participant=%s "
+        #               "where id=%s")
+        #participant = row[0]["participant"] + 1
+        #data = [participant, id]
+        #cursor.execute(stmt_update, data)
 
         self.connection.commit()
         cursor.close()
