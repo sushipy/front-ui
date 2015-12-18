@@ -9,13 +9,13 @@ class Event:
 
     def _connect(self):
         self.connection = MySQLdb.connect(\
-            host="192.168.56.155", \
-            ###host="10.194.23.240", \
+            ###host="192.168.56.155", \
+            host="10.194.23.240", \
             db="bmi22", \
-            user="root", \
-            ###user="bmi22", \
-            passwd="password")
-            ###passwd="bmi22", \
+            ###user="root", \
+            user="bmi22", \
+            ###passwd="password")
+            passwd="bmi22")
         return
 
     def _disconnect(self):
